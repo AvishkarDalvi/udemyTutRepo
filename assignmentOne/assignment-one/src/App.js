@@ -8,7 +8,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <UserInput/>
-        <UserOutput/>
+        <UserOutput username='Avi'/>
+        <UserOutput username='Dalvi'/>
       </header>
     </div>
   );
