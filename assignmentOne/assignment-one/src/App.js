@@ -14,15 +14,11 @@ class App extends Component {
     })
   }
   render() {
-    const style={
-      backgroundColor:'white',
-      border:'2px solid blue',
-      padding: '8px'
-    };
+
     return (
       <div className="App">
         <header className="App-header">
-          <UserInput style={style}change={this.textHandler} username={this.state.userName}/>
+          <UserInput change={this.textHandler} username={this.state.userName}/>
           <UserOutput username={this.state.userName} />
           <UserOutput username={this.state.userName} />
         </header>
