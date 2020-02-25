@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
       <h1>Assignment Two</h1>
-        <input type='text' onChange={(event)=>this.inputChangeHandler(event)}/>
+        <input type='text' onChange={(event)=>this.inputChangeHandler(event)} value={this.state.input}/>
         <p>The length of the input is :=> {this.state.input.length}</p>
         <ValidationComponent length={this.state.input.length}/>
         {boxes}
