@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person'
+import Person from './Person/Person';
+
 
 class App extends Component {
 
@@ -41,6 +42,18 @@ class App extends Component {
     })
   }
   render() {
+    const style = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
+    };
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -54,17 +67,33 @@ class App extends Component {
             })
           }
         </div>
-      )
+      );
+      style.backgroundColor = 'red';
+      style[':hover'].backgroundColor = {
+        backgroundColor: 'blue',
+        color: 'black'
+      }
+    }
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length < 2) {
+      classes.push('bold');
     }
     return (
-      <div className="App">
-        <h1>Hi, i'm a React app.</h1>
-        <p>This is really working.</p>
-        {/* one way of binding argument to a method call */}
-        <button onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {persons}
 
-      </div>
+        <div className="App">
+          <h1>Hi, i'm a React app.</h1>
+          <p className={classes.join(' ')}>This is really working.</p>
+          {/* one way of binding argument to a method call */}
+          <button style={style}
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          {persons}
+
+        </div>
+
+
     );
     //return React.createElement('div',{className:'App'},React.createElement('h1',{className:'App'},'Does this work now?'));
   }
