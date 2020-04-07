@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit'
 
 
 class App extends Component {
@@ -44,42 +44,22 @@ class App extends Component {
   }
   render() {
     let persons = null;
-    let btnClass = null;
     if (this.state.showPersons) {
-      persons = (
-        <div>
-          {
-            this.state.persons.map((person, index) => {
-              return <ErrorBoundary key={person.id}><Person name={person.name} age={person.age}
-                key={person.id} click={() => this.deletePersonHandler(index)}
-                changed={(event) => this.nameChangedHandler(event, person.id)}
-              /></ErrorBoundary>
-            })
-          }
-        </div>
-      );
-      btnClass = classes.Red;
-    }
-    const assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if (this.state.persons.length < 2) {
-      assignedClasses.push(classes.bold);
+      persons =
+        <Persons
+          persons={this.state.persons} clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
     }
     return (
-
       <div className={classes.App}>
-        <h1>Hi, i'm a React app.</h1>
-        <p className={assignedClasses.join(' ')}>This is really working.</p>
-        {/* one way of binding argument to a method call */}
-        <button className={btnClass}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        <Cockpit
+          title={this.props.appTitle}
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler} showPersons={this.state.showPersons}
+        />
         {persons}
-
       </div>
-
-
     );
     //return React.createElement('div',{className:'App'},React.createElement('h1',{className:'App'},'Does this work now?'));
   }
