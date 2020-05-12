@@ -1,3 +1,12 @@
 .App {
   text-align: center;
 }
+.App btnPit{
+  cursor: pointer;
+  border: solid 1px palevioletred;
+  background-color: sandybrown;
+  color: white;
+}
+.App btnPit:hover{
+  background-color: pink;
+}
